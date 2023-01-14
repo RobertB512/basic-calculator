@@ -1,0 +1,118 @@
+/* resets, body, and html styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Atkinson Hyperlegible', sans-serif;
+}ƒ
+html {
+  font-size: 65.5%;
+}
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: hsl(240, 100%, 27%);
+}
+/* calculator */
+.calculator-base {
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  gap: 5px;
+  width: 28rem;
+  /* height: 30rem; */
+  padding: 1rem;
+  border-radius: 1rem;
+  /* max-width: 80%; */
+  background-color: hsl(173, 24%, 44%);
+  border-bottom: 5px outset hsl(173, 24%, 44%);
+}
+
+/* display field styels */
+.calc-display {
+  font-size: 2rem;
+  font-weight: 700;
+  font-style: italic;
+  background-color: hsl(191, 54%, 16%);
+  border-radius: 1rem;
+  border: 5px inset hsl(191, 54%, 26%);
+  color: hsl(0, 0%, 100%);
+}
+.display-field {
+  height: 3.5rem;
+  padding: 0.5rem;
+  text-align: right;
+  overflow: scroll;
+}
+
+.display-field::-webkit-scrollbar {
+  display: none;
+}
+.display-field {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+.equation-field {
+  border-bottom: 0.1rem solid hsl(76, 95%, 49%);
+}
+
+/* btn area styles */
+.btn-area {
+  display: flex;
+  width: fit-content;
+  /* gap: 5px; */
+}
+.btn-box {
+  display: flex;
+  /* flex-wrap: wrap; */
+  gap: 5px;
+}
+.num-pad {
+  display: flex;
+  flex-direction: column;
+}
+.num-row,
+.opp-row {
+  display: flex;
+  gap: 5px;
+}
+.number {
+  background-color: hsl(111, 66%, 27%);
+  border-bottom: 5px outset hsl(111, 66%, 27%);
+  color: hsl(0, 0%, 100%);
+}
+.number:active {
+  border: 3px inset hsl(111, 66%, 27%);
+}
+.operation-pad {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+.operation {
+  background-color: hsl(40, 65%, 50%);
+  border-bottom: 5px outset hsl(40, 65%, 50%);
+}
+.operation:active {
+  border: 3px inset hsl(40, 65%, 50%);
+}
+.btn { 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 3rem;
+  padding: 1.5rem;
+  border-radius: 1rem;
+  width: 5rem;
+  height: 5rem;
+}
+
+/* style for specific buttons */
+.zero,
+.clear,
+.equals {
+  flex: 2;
+}

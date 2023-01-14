@@ -4,39 +4,64 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com"> 
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> 
+  <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,700&display=swap" rel="stylesheet">
   <!-- styles -->
-  <link rel="stylesheet" href="./styles/style.css">
+  <link rel="stylesheet" href="./styles/styles.css">
   <!-- scripts -->
   <script src="./scripts/script.js" defer></script>
   <title>Basic Calculator</title>
 </head>
 <body>
-  <section class="calcualtor-base">
+  <section class="calculator-base">
     <section class="calc-display">
-      <p class="display-area equation-output">0</p>
-      <p class="display-area answer-output">0</p>
+      <div class="display-field equation-field">0</div>
+      <div class="display-field answer-field">0</div>
     </section>
-    <section class="num-pad btn-box"> 
-      <div class="nine number btn">9</div>
-      <div class="eight number btn">8</div>
-      <div class="seven number btn">7</div>
-      <div class="six number btn">6</div>
-      <div class="five number btn">5</div>
-      <div class="four number btn">4</div>
-      <div class="three number btn">3</div>
-      <div class="two number btn">2</div>
-      <div class="one number btn">1</div>
-      <div class="zero number btn">0</div>
-      <div class="decimal number btn">.</div>
+
+    <section class="btn-area">
+      <section class="num-pad btn-box"> 
+        <section class="num-top-row num-row">
+          <div class="nine number btn">9</div>
+          <div class="eight number btn">8</div>
+          <div class="seven number btn">7</div>
+        </section>
+        <section class="num-top-mid-row num-row">
+          <div class="six number btn">6</div>
+          <div class="five number btn">5</div>
+          <div class="four number btn">4</div>
+        </section>
+        <section class="num-btm-mid-row num-row">
+          <div class="three number btn">3</div>
+          <div class="two number btn">2</div>
+          <div class="one number btn">1</div>
+        </section>
+        <section class="btm-num-row num-row">
+          <div class="zero number btn">0</div>
+          <div class="decimal number btn">.</div>
+        </section>
+      </section>
+
+      <section class="operation-pad btn-box">
+        <section class="top-opp-row opp-row">
+          <div class="clear operation btn">C</div>
+        </section>
+        <section class="mid-top-opp-row opp-row">
+          <div class="plus operation btn">+</div>
+          <div class="minus operation btn">-</div>
+        </section>
+        <section class="mid-btm-opp-row opp-row">
+          <div class="times operation btn">X</div>
+          <div class="divide operation btn">&#247;</div> <!-- divide symbol -->
+        </section>
+        <section class="btm-opp-row opp-row">
+          <div class="equals operation btn">=</div>
+        </section>
+      </section>
     </section>
-    <section class="operation-pad btn-box">
-      <div class="clear operation btn">C</div>
-      <div class="plus operation btn">+</div>
-      <div class="minus operation btn">-</div>
-      <div class="times operation btn">X</div>
-      <div class="divide operation btn">&#247;</div> <!-- divide symbol -->
-      <div class="equals operation btn">=</div>
-    </section>
+    
   </section>
 </body>
 </html>
