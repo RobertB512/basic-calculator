@@ -59,3 +59,7 @@ operators.forEach(operator => operator.addEventListener("click", () => {
   console.log(userEquation)
 }))
 
+clear?.addEventListener("click", () => {
+  userEquation.pop()
+  equationField.textContent = userEquation.join("")
+})
