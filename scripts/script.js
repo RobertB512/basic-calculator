@@ -11,7 +11,7 @@
 let equationField = document.querySelector(".equation-field")
 let answerField = document.querySelector(".answer-field")
 // for the numbers
-let number = document.querySelectorAll(".number")
+let numbers = document.querySelectorAll(".number")
 let one = document.querySelector(".one")
 let two = document.querySelector(".two")
 let three = document.querySelector(".three")
@@ -24,11 +24,38 @@ let nine = document.querySelector(".nine")
 let zero = document.querySelector(".zero")
 let decimal = document.querySelector(".decimal")
 // for the operations
-let operation = document.querySelectorAll(".operation")
+let operations = document.querySelectorAll(".operation")
 let clear = document.querySelector(".clear")
-let operator = document.querySelectorAll(".operator")
+let operators = document.querySelectorAll(".operator")
 let plus = document.querySelector(".plus")
 let minus = document.querySelector(".minus")
 let times = document.querySelector(".times")
 let divide = document.querySelector(".divide")
 let equals = document.querySelector(".equals")
+
+let userEquation = []
+
+numbers.forEach(number => number.addEventListener("click", () => {
+  if (equationField?.textContent === "0") {
+    equationField.textContent = ""
+  }
+  equationField.textContent += number.textContent
+  while (userEquation[-1] === ".") {
+    decimal?.setAttribute("disabled", "disabled")
+  }
+  userEquation.push(number.textContent)
+  console.log(userEquation)
+}))
+
+operators.forEach(operator => operator.addEventListener("click", () => {
+  // if (equationField?.textContent === "0") {
+  //   equationField.textContent = ""
+  // }
+  equationField.textContent += operator.textContent
+  while (userEquation[-1] === ".") {
+    decimal?.setAttribute("disabled", "disabled")
+  }
+  userEquation.push(operator.textContent)
+  console.log(userEquation)
+}))
+
