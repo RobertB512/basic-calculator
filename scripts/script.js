@@ -44,7 +44,7 @@ numbers.forEach(number => number.addEventListener("click", () => {
     decimal?.setAttribute("disabled", "disabled")
   }
   userEquation.push(number.textContent)
-  console.log(userEquation)
+  // console.log(userEquation)
 }))
 
 operators.forEach(operator => operator.addEventListener("click", () => {
@@ -56,10 +56,32 @@ operators.forEach(operator => operator.addEventListener("click", () => {
     decimal?.setAttribute("disabled", "disabled")
   }
   userEquation.push(operator.textContent)
-  console.log(userEquation)
+  // console.log(userEquation)
 }))
 
 clear?.addEventListener("click", () => {
   userEquation.pop()
   equationField.textContent = userEquation.join("")
+})
+
+equals?.addEventListener("click", () => {
+  function checkIfValid(equation) {
+    try {
+      let answer = eval(equation).toString()
+      return answer
+    } catch {
+      let answer = "error"
+      return answer
+    }
+  }
+  answerField.textContent = ""
+  equationField.textContent = "" 
+  // let result = eval(userEquation.join("")).toString()
+  // console.log(userEquation.join(""))
+  let result = checkIfValid(userEquation.join(""))
+  console.log(result)
+  // console.log(`evaluated: ${eval(userEquation.join(""))}`)
+  // console.log(`result: ${typeof result}`)
+  answerField.textContent = result
+  userEquation = []
 })
