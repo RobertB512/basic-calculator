@@ -1,6 +1,6 @@
 // TODO //
 // Successfully type numbers and symbols into the equation field  
-  // Can't type a symbol or decimal as a first number
+  // Can't type some symbols as a first character
   // Can't have two decimals or symbols in a row 
   // Can't end with a decimal or symbol when hitting equals
 
@@ -12,16 +12,6 @@ let equationField = document.querySelector(".equation-field")
 let answerField = document.querySelector(".answer-field")
 // for the numbers
 let numbers = document.querySelectorAll(".number")
-let one = document.querySelector(".one")
-let two = document.querySelector(".two")
-let three = document.querySelector(".three")
-let four = document.querySelector(".four")
-let five = document.querySelector(".five")
-let six = document.querySelector(".six")
-let seven = document.querySelector(".seven")
-let eight = document.querySelector(".eight")
-let nine = document.querySelector(".nine")
-let zero = document.querySelector(".zero")
 let decimal = document.querySelector(".decimal")
 // for the operations
 let operations = document.querySelectorAll(".operation")
@@ -44,19 +34,14 @@ numbers.forEach(number => number.addEventListener("click", () => {
     decimal?.setAttribute("disabled", "disabled")
   }
   userEquation.push(number.textContent)
-  // console.log(userEquation)
 }))
 
 operators.forEach(operator => operator.addEventListener("click", () => {
-  // if (equationField?.textContent === "0") {
-  //   equationField.textContent = ""
-  // }
   equationField.textContent += operator.textContent
   while (userEquation[-1] === ".") {
     decimal?.setAttribute("disabled", "disabled")
   }
   userEquation.push(operator.textContent)
-  // console.log(userEquation)
 }))
 
 clear?.addEventListener("click", () => {
@@ -76,12 +61,7 @@ equals?.addEventListener("click", () => {
   }
   answerField.textContent = ""
   equationField.textContent = "" 
-  // let result = eval(userEquation.join("")).toString()
-  // console.log(userEquation.join(""))
   let result = checkIfValid(userEquation.join(""))
-  console.log(result)
-  // console.log(`evaluated: ${eval(userEquation.join(""))}`)
-  // console.log(`result: ${typeof result}`)
   answerField.textContent = result
   userEquation = []
 })
