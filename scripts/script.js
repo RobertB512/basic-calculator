@@ -4,7 +4,6 @@
   // Can't have two decimals or symbols in a row 
   // Can't end with a decimal or symbol when hitting equals
 
-// Successfully output result of the equation to the answer field
 
 // ----- grab DOM elements -----
 // for the display field
@@ -30,17 +29,11 @@ numbers.forEach(number => number.addEventListener("click", () => {
     equationField.textContent = ""
   }
   equationField.textContent += number.textContent
-  while (userEquation[-1] === ".") {
-    decimal?.setAttribute("disabled", "disabled")
-  }
   userEquation.push(number.textContent)
 }))
 
 operators.forEach(operator => operator.addEventListener("click", () => {
   equationField.textContent += operator.textContent
-  while (userEquation[-1] === ".") {
-    decimal?.setAttribute("disabled", "disabled")
-  }
   userEquation.push(operator.textContent)
 }))
 
@@ -49,10 +42,15 @@ clear?.addEventListener("click", () => {
   equationField.textContent = userEquation.join("")
 })
 
+let addition = (num1, num2) => num1 + num2
+let subtraction = (num1, num2) => num1 - num2
+let multiplication = (num1, num2) => num1 * num2
+let division = (num1, num2) => num1 / num2
+
 equals?.addEventListener("click", () => {
   function checkIfValid(equation) {
     try {
-      let answer = eval(equation).toString()
+      // let answer = eval(equation).toString()
       return answer
     } catch {
       let answer = "error"
