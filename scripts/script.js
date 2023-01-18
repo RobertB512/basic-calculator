@@ -32,20 +32,28 @@ numbers.forEach(number => number.addEventListener("click", () => {
   userEquation.push(number.textContent)
 }))
 
-operators.forEach(operator => operator.addEventListener("click", () => {
-  equationField.textContent += operator.textContent
-  userEquation.push(operator.textContent)
-}))
+
 
 clear?.addEventListener("click", () => {
   userEquation.pop()
   equationField.textContent = userEquation.join("")
 })
 
-let addition = (num1, num2) => num1 + num2
-let subtraction = (num1, num2) => num1 - num2
-let multiplication = (num1, num2) => num1 * num2
-let division = (num1, num2) => num1 / num2
+let doAdd = (num1, num2) => num1 + num2
+let doMinus = (num1, num2) => num1 - num2
+let doTimes = (num1, num2) => num1 * num2
+let doDivide = (num1, num2) => num1 / num2
+let operate = (operator, num1, num2) {
+  if (operator === "+") return doAdd(num1, num2)
+  if (operator === "-") return doMinus(num1, num2)
+  if (operator === "*") return doTimes(num1, num2)
+  if (operator === "/") return doDivide(num1, num2)
+}
+
+plus?.addEventListener("click", (num1, num2) => doAdd(num1, num2))
+minus?.addEventListener("click", (num1, num2) => doMinus(num1, num2))
+times?.addEventListener("click", (num1, num2) => doTimes(num1, num2))
+divide?.addEventListener("click", (num1, num2) => doDivide(num1, num2))
 
 equals?.addEventListener("click", () => {
   function checkIfValid(equation) {
