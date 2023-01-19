@@ -25,30 +25,46 @@ let equals = document.querySelector(".equals")
 let userEquation = []
 
 numbers.forEach(number => number.addEventListener("click", () => {
-  if (equationField?.textContent === "0") {
-    equationField.textContent = ""
-  }
-  equationField.textContent += number.textContent
-  userEquation.push(number.textContent)
+  answerField.textContent += number.textContent
+  // userEquation.push(number.textContent)
 }))
 
 
 
 clear?.addEventListener("click", () => {
-  userEquation.pop()
-  equationField.textContent = userEquation.join("")
+  // userEquation.po
+  answerField.textContent = ""
 })
-
+function saveNumber() {
+  userEquation.push(parseInt(answerField.textContent))
+  equationField.textContent += answerField.textContent
+  answerField.textContent = ""
+}
 let doAdd = (num1, num2) => num1 + num2
 let doMinus = (num1, num2) => num1 - num2
 let doTimes = (num1, num2) => num1 * num2
 let doDivide = (num1, num2) => num1 / num2
-let operate = (operator, num1, num2) {
+let operate = (operator, num1, num2) => {
   if (operator === "+") return doAdd(num1, num2)
   if (operator === "-") return doMinus(num1, num2)
   if (operator === "*") return doTimes(num1, num2)
   if (operator === "/") return doDivide(num1, num2)
 }
+
+operators.forEach(operator => operator.addEventListener("click", () => {
+  saveNumber()
+  if (userEquation.length === 3) {
+    console.log(`entered if (userequation): ${userEquation}`)
+    let answer = operate(userEquation[1], userEquation[0], userEquation[2])
+    userEquation = [answer]
+    equationField.textContent = answer
+    answerField.textContent = ""
+    
+  }
+  console.log(`equation: ${userEquation}`)
+  userEquation.push(operator.textContent)
+  equationField.textContent += operator.textContent
+}))
 
 plus?.addEventListener("click", (num1, num2) => doAdd(num1, num2))
 minus?.addEventListener("click", (num1, num2) => doMinus(num1, num2))
@@ -56,7 +72,8 @@ times?.addEventListener("click", (num1, num2) => doTimes(num1, num2))
 divide?.addEventListener("click", (num1, num2) => doDivide(num1, num2))
 
 equals?.addEventListener("click", () => {
-  function checkIfValid(equation) {
+  function checkIfValid() {
+   let answer = operate(userEquation[1], userEquation[0], parseInt(answerField.textContent))
     try {
       // let answer = eval(equation).toString()
       return answer
@@ -65,9 +82,9 @@ equals?.addEventListener("click", () => {
       return answer
     }
   }
-  answerField.textContent = ""
-  equationField.textContent = "" 
-  let result = checkIfValid(userEquation.join(""))
-  answerField.textContent = result
+  answerField.textContent = checkIfValid()
+  equationField.textContent = ""
+  // let result = checkIfValid(userEquation.join(""))
+  // answerField.textContent = result
   userEquation = []
 })
