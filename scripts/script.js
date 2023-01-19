@@ -24,22 +24,7 @@ let equals = document.querySelector(".equals")
 
 let userEquation = []
 
-numbers.forEach(number => number.addEventListener("click", () => {
-  answerField.textContent += number.textContent
-  // userEquation.push(number.textContent)
-}))
-
-
-
-clear?.addEventListener("click", () => {
-  // userEquation.po
-  answerField.textContent = ""
-})
-function saveNumber() {
-  userEquation.push(parseInt(answerField.textContent))
-  equationField.textContent += answerField.textContent
-  answerField.textContent = ""
-}
+// functions to use
 let doAdd = (num1, num2) => num1 + num2
 let doMinus = (num1, num2) => num1 - num2
 let doTimes = (num1, num2) => num1 * num2
@@ -50,6 +35,17 @@ let operate = (operator, num1, num2) => {
   if (operator === "*") return doTimes(num1, num2)
   if (operator === "/") return doDivide(num1, num2)
 }
+
+function saveNumber() {
+  userEquation.push(parseInt(answerField.textContent))
+  equationField.textContent += answerField.textContent
+  answerField.textContent = ""
+}
+
+// event listeners
+numbers.forEach(number => number.addEventListener("click", () => {
+  answerField.textContent += number.textContent
+}))
 
 operators.forEach(operator => operator.addEventListener("click", () => {
   saveNumber()
@@ -71,11 +67,14 @@ minus?.addEventListener("click", (num1, num2) => doMinus(num1, num2))
 times?.addEventListener("click", (num1, num2) => doTimes(num1, num2))
 divide?.addEventListener("click", (num1, num2) => doDivide(num1, num2))
 
+clear?.addEventListener("click", () => {
+  answerField.textContent = ""
+})
+
 equals?.addEventListener("click", () => {
   function checkIfValid() {
    let answer = operate(userEquation[1], userEquation[0], parseInt(answerField.textContent))
     try {
-      // let answer = eval(equation).toString()
       return answer
     } catch {
       let answer = "error"
@@ -84,7 +83,5 @@ equals?.addEventListener("click", () => {
   }
   answerField.textContent = checkIfValid()
   equationField.textContent = ""
-  // let result = checkIfValid(userEquation.join(""))
-  // answerField.textContent = result
   userEquation = []
 })
