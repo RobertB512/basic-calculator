@@ -15,6 +15,7 @@ let decimal = document.querySelector(".decimal")
 // for the operations
 let operations = document.querySelectorAll(".operation")
 let clear = document.querySelector(".clear")
+let clearAll = document.querySelector(".clear-all")
 let operators = document.querySelectorAll(".operator")
 let plus = document.querySelector(".plus")
 let minus = document.querySelector(".minus")
@@ -69,6 +70,11 @@ divide?.addEventListener("click", (num1, num2) => doDivide(num1, num2))
 
 clear?.addEventListener("click", () => {
   answerField.textContent = ""
+})
+clearAll?.addEventListener("click", () => {
+  answerField.textContent = ""
+  equationField.textContent = ""
+  userEquation = []
 })
 
 equals?.addEventListener("click", () => {

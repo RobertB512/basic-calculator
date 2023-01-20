@@ -112,7 +112,6 @@ body {
 
 /* style for specific buttons */
 .zero,
-.clear,
 .equals {
   flex: 2;
 }
