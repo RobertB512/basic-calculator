@@ -26,10 +26,11 @@ let equals = document.querySelector(".equals")
 let userEquation = []
 
 // functions to use
-let doAdd = (num1, num2) => num1 + num2
-let doMinus = (num1, num2) => num1 - num2
-let doTimes = (num1, num2) => num1 * num2
-let doDivide = (num1, num2) => num1 / num2
+let doRound = (numToRound) => Math.round((numToRound) * 100000) / 100000
+let doAdd = (num1, num2) => doRound(num1 + num2)
+let doMinus = (num1, num2) => doRound(num1 - num2)
+let doTimes = (num1, num2) => doRound(num1 * num2)
+let doDivide = (num1, num2) => doRound(num1 / num2)
 let operate = (operator, num1, num2) => {
   if (operator === "+") return doAdd(num1, num2)
   if (operator === "-") return doMinus(num1, num2)
@@ -38,7 +39,9 @@ let operate = (operator, num1, num2) => {
 }
 
 function saveNumber() {
-  userEquation.push(parseInt(answerField.textContent))
+  console.log(`test decimal ${answerField.textContent}`)
+  userEquation.push(parseFloat(answerField.textContent))
+  console.log(`test decimal ${userEquation}`)
   equationField.textContent += answerField.textContent
   answerField.textContent = ""
 }
@@ -51,7 +54,7 @@ numbers.forEach(number => number.addEventListener("click", () => {
 operators.forEach(operator => operator.addEventListener("click", () => {
   saveNumber()
   if (userEquation.length === 3) {
-    console.log(`entered if (userequation): ${userEquation}`)
+    console.log(`entered if (userEquation): ${userEquation}`)
     let answer = operate(userEquation[1], userEquation[0], userEquation[2])
     userEquation = [answer]
     equationField.textContent = answer
@@ -81,6 +84,7 @@ equals?.addEventListener("click", () => {
   function checkIfValid() {
     userEquation.push(parseInt(answerField.textContent))
     let answer = operate(userEquation[1], userEquation[0], userEquation[2])
+    // answer = Math.round(answer * 1000) / 1000
     if (userEquation[0] === 0 && userEquation[1] === "/" && userEquation[2] === 0) answer = "Can't be done."
     try {
       return answer
