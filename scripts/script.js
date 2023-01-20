@@ -79,7 +79,9 @@ clearAll?.addEventListener("click", () => {
 
 equals?.addEventListener("click", () => {
   function checkIfValid() {
-   let answer = operate(userEquation[1], userEquation[0], parseInt(answerField.textContent))
+    userEquation.push(parseInt(answerField.textContent))
+    let answer = operate(userEquation[1], userEquation[0], userEquation[2])
+    if (userEquation[0] === 0 && userEquation[1] === "/" && userEquation[2] === 0) answer = "Can't be done."
     try {
       return answer
     } catch {
@@ -88,6 +90,7 @@ equals?.addEventListener("click", () => {
     }
   }
   answerField.textContent = checkIfValid()
+  console.log(`userEquation ${userEquation}`)
   equationField.textContent = ""
   userEquation = []
 })
