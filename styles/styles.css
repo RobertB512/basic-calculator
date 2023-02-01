@@ -63,7 +63,7 @@ body {
 .btn-area {
   display: flex;
   width: fit-content;
-  /* gap: 5px; */
+  gap: 5px;
 }
 .btn-box {
   display: flex;
@@ -79,14 +79,15 @@ body {
   display: flex;
   gap: 5px;
 }
+.pressed {
+  border: 5px inset hsl(173, 24%, 34%);
+}
 .number {
   background-color: hsl(111, 66%, 27%);
   border-bottom: 5px outset hsl(111, 66%, 27%);
   color: hsl(0, 0%, 100%);
 }
-.number:active {
-  border: 3px inset hsl(111, 66%, 27%);
-}
+
 .operation-pad {
   display: flex;
   flex-direction: column;
@@ -96,9 +97,7 @@ body {
   background-color: hsl(40, 65%, 50%);
   border-bottom: 5px outset hsl(40, 65%, 50%);
 }
-.operation:active {
-  border: 3px inset hsl(40, 65%, 50%);
-}
+
 .btn { 
   display: flex;
   justify-content: center;
